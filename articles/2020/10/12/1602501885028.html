@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Hello World - 周忠良</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Hello World - 周忠良"/><meta property="og:site_name" content="周忠良"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/12/1602469502660.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Hello World - 周忠良" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/12/1602469502660.html">            <link rel="stylesheet"
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>关于游戏加密 - 周忠良</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="关于游戏加密 - 周忠良"/><meta property="og:site_name" content="周忠良"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/12/1602501885028.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="关于游戏加密 - 周忠良" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">            <link rel="stylesheet"
                   href="https://kyochow.github.io/skins/Finding/css/base.css?1602466996458"/>
-            <link rel="next" title="关于Unity Native插件的开发" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
+            <link rel="prev" title="关于Unity Native插件的开发" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script>    </head>
     <body class="nav-closed">
         <div class="nav">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#toc_h1_0">Hello World</a>
+            <a href="#toc_h1_0">说白了</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#toc_h5_1">归根结底，游戏的加密，都只是仅仅提高了被破解的门槛而已，阻挡了伸手党使用各种工具提取游戏资源，修改游戏配置乃至代码，并寄希望于大神对我们的游戏没那么有兴趣，仅此而已</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_2">脚本加密</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_3">1. 使用luac对脚本进行编译</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_4">2. 在luac的基础上，对编译出来的字节码进行二次加密</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_5">3. 在1+2的基础上，强化加密工具库</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_6">4. 在1+2+3的基础上，异或的KEY，由外部传入</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_7">5. 想不到5了，或许就是加密算法的进一步提高吧</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_8">AssetBundle 加密</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_9">1.使用offset + 伪造AssetBundle头部</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_10">2.对AssetBundle再次异或</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_11">关于异或(抄自百度百科)</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_12">未完待续</a>
         </li>
 </ul><div class="count">
     <div class="fn-clear">
@@ -45,26 +81,56 @@
                 <article class="post fn-wrap">
                     <header>
                         <h2 class="post-title">
-                            <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602469502660.html">
-                                Hello World
+                            <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
+                                关于游戏加密
                             </a>
                         </h2>
                         <section class="post-meta">
                             <span>
-                                <a rel="tag" href="https://kyochow.github.io/tags/Solo">
-                                    Solo</a>
+                                <a rel="tag" href="https://kyochow.github.io/tags/Unity3d">
+                                    Unity3d</a>
                             </span>
                             <time>2020-10-12</time>
                         </section>
                     </header>
                     <section class="post-content post-content--article vditor-reset">
-                        <h1 id="toc_h1_0">Hello World</h1>
+                        <h1 id="toc_h1_0">说白了</h1>
+<h5 id="toc_h5_1">归根结底，游戏的加密，都只是仅仅提高了被破解的门槛而已，阻挡了伸手党使用各种工具提取游戏资源，修改游戏配置乃至代码，并寄希望于大神对我们的游戏没那么有兴趣，仅此而已</h5>
+<h1 id="toc_h1_2">脚本加密</h1>
+<p>以Lua为例，很多游戏使用Lua作为逻辑开发语言，将lua打入AssetBundle或者zip包，进行热更，但这种情况真的太容易被破解了，常见的解决思路分如下几步</p>
+<h4 id="toc_h4_3">1. 使用luac对脚本进行编译</h4>
+<p>生成字节码，天然丧失阅读性，还带着一点点加速属性，这是入门级"加密"，算是一举两得，但是破解难度也是最低的，因为github上unluac之类的工具太多了，对于有一点编程基础的都可以反编译回来，通过修改再封包，就可以达到破解目的</p>
+<h4 id="toc_h4_4">2. 在luac的基础上，对编译出来的字节码进行二次加密</h4>
+<p>一般兼顾解码速度的话，会使用异或算法，这时候已经可以拦截大多数专业程序员了</p>
+<h4 id="toc_h4_5">3. 在1+2的基础上，强化加密工具库</h4>
+<p>将异或算法的工具，使用c来写native库，Key写在native库里，增加破解难度，好处是可以进一步速度加成，破解更难，但是通过汇编级别的静态代码调试还是可以的，但需要更牛的编程水平</p>
+<h4 id="toc_h4_6">4. 在1+2+3的基础上，异或的KEY，由外部传入</h4>
+<p>这时候，只能通过汇编级别的动态代码调试，而且两边既有底层语言，又有高级语言，会更加增加分析难度，即便是技术大牛，绝大多数也会在这中间疲于奔命</p>
+<h4 id="toc_h4_7">5. 想不到5了，或许就是加密算法的进一步提高吧</h4>
+<h1 id="toc_h1_8">AssetBundle 加密</h1>
+<p>上文说到lua加密，我们的bundle也是需要加密的，这样可以提高被提取美术资源的难度，同时，因为lua会被打包进AssetBundle里，所以可以进一步增加破解门槛</p>
+<h3 id="toc_h3_9">1.使用offset + 伪造AssetBundle头部</h3>
+<p>根据<a href="https://docs.unity3d.com/ScriptReference/AssetBundle.LoadFromFile.html" target="_blank">AssetBundle.LoadFromFile</a>的第三个参数，bundle可以在build的时候，根据一定的规则，指定一个offset，读取的时候，再次从这个offset读取，这个空白的部分，可以填任意东西来混淆视听，达到让网上那些读取工具崩溃或不工作的目的</p>
+<h3 id="toc_h3_10">2.对AssetBundle再次异或</h3>
+<p>或许有人会担心，对AssetBundle再次异或会不会导致trunk_base被破坏掉，其实并不会，Unity提供了一个新的API <a href="https://docs.unity3d.com/ScriptReference/AssetBundle.LoadFromStream.html" target="_blank">AssetBundle.LoadFromStream</a>可以很好的解决这个问题</p>
+<h2 id="toc_h2_11">关于异或(抄自百度百科)</h2>
+<p>异或，英文为exclusive OR，缩写成xor</p>
+<p>异或（xor）是一个数学运算符。它应用于逻辑运算。异或的数学符号为“⊕”，计算机符号为“xor”。其运算法则为：</p>
+<p>a⊕b = (¬a ∧ b) ∨ (a ∧¬b)</p>
+<p>如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。</p>
+<p>异或也叫半加运算，其运算法则相当于不带进位的二进制加法：二进制下用1表示真，0表示假，则异或的运算法则为：0⊕0=0，1⊕0=1，0⊕1=1，1⊕1=0（同为0，异为1），这些法则与加法是相同的，只是不带进位，所以异或常被认作不进位加法。</p>
+<p>异或略称为XOR、EOR、EX-OR</p>
+<p>程序中有三种演算子：XOR、xor、⊕。</p>
+<p>使用方法如下</p>
+<p>z = x ⊕ y</p>
+<p>z = x xor y</p>
+<h2 id="toc_h2_12">未完待续</h2>
                         <div class="marginTop12">
                             <hr>
 
-标题：Hello World<br>
+标题：关于游戏加密<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
-地址：<a href="https://kyochow.github.io/articles/2020/10/12/1602469502660.html" target="_blank">https://kyochow.github.io/articles/2020/10/12/1602469502660.html</a><br>
+地址：<a href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html" target="_blank">https://kyochow.github.io/articles/2020/10/12/1602501885028.html</a><br>
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -79,9 +145,9 @@
                             </a>
                         </figure>
 <div class="article__share"
-     data-title="Hello World"
+     data-title="关于游戏加密"
      data-blogtitle="周忠良"
-     data-url="https://kyochow.github.io/articles/2020/10/12/1602469502660.html"
+     data-url="https://kyochow.github.io/articles/2020/10/12/1602501885028.html"
      data-avatar="https://b3logfile.com/avatar/1602432084209.png?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -113,10 +179,10 @@
                 <div id="randomArticles" class="fn-wrap"></div>
                     <div id="gitalk-container" style="margin-top: 100px" class="fn-wrap"></div>
                     <div id="b3logsolocomments"></div>
-                    <div id="vcomment" style="margin-top: 100px" class="fn-wrap" data-name="kyochow" data-postId="1602469502660"></div>
+                    <div id="vcomment" style="margin-top: 100px" class="fn-wrap" data-name="kyochow" data-postId="1602501885028"></div>
             </main>
             <aside class="read-next">
-                <div class="read-next-story " style="background-image: url('https://kyochow.github.io/skins/Finding/images/next.jpg')"
+                <div class="read-next-story prev " style="background-image: url('https://kyochow.github.io/skins/Finding/images/preview.jpg')"
                      onclick="window.location = 'https://kyochow.github.io/articles/2020/10/12/1602495480321.html'">
                     <section class="post">
                         <h2>关于Unity Native插件的开发</h2>
@@ -141,7 +207,7 @@
     version: "4.3.1",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1602469502660",
+    articleId: "1602501885028",
   }
 </script>
 <script src="https://kyochow.github.io/skins/Finding/js/common.min.js?1602466996458"></script>
@@ -151,7 +217,7 @@
     Util.addScript('https://kyochow.github.io/js/page.min.js?1602466996458', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1602469502660",
+        "oId": "1602501885028",
         "blogHost": "https://kyochow.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
@@ -160,7 +226,7 @@
         page.load();
             page.tips.externalRelevantArticlesDisplayCount = "0";
             page.loadRandomArticles();
-            page.loadRelevantArticles('1602469502660', '<h4>相关阅读：</h4>');
+            page.loadRelevantArticles('1602501885028', '<h4>相关阅读：</h4>');
                 page.share();
     });
 </script>
@@ -168,4 +234,4 @@
     </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 5ms, 2020/10/12 19:24:51 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 6ms, 2020/10/12 19:24:51 -->
