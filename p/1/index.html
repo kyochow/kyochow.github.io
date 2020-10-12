@@ -20,7 +20,7 @@
             </h1>
         </hgroup>
         <p class="subtitle">
-            A code farmer
+            A Code Farmer
         </p>
         <nav>
             <ul>
@@ -43,6 +43,49 @@
     </footer>
 </div>
         <main>
+    <article>
+        <header class="fn__flex">
+            <h2 class="fn__flex-1">
+                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
+                    关于Unity Native插件的开发
+                </a>
+                    <sup>
+                        <a href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
+                            有更新！
+                        </a>
+                    </sup>
+            </h2>
+            <time><span class="icon-date"></span> 2020-10-12</time>
+        </header>
+            <a class="abstract vditor-reset" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
+                构建native库的意义  核心算法保密（例如随机算法，寻路算法等） 效率考量(c++库效率比C#要高一个数量级) 跨端需求(客户端，服务端)  目标  可以被用作Unity Plugin，供Unity Editor(Windows + Mac )使用 也可以编译为库文件，供移动端使用(Android + iOS)  准备工作  本文以Mac系统为例 安装Homebrew 安装CMake，一个跨平台的安装和编译工具，可以用简单的语句来描述所有平台的安装或编译过程 JDK SDK NDK这些可以使用Unity安装包内附带的 XCode Visual Studio  native插件的基本要素 1. 全局头文件Define.h，定义API，为了兼顾做Unity-Plugin和普通dll库，这里做一个宏定义判断(标准写法，全网通用) #pragma once // Unity native plugin API // Compatible with C99 #if defined(__CYGWIN32__) #define API __declspec(dllexport) __stdcal....
+            </a>
+        <footer class="article__footer fn__flex">
+            <span class="icon-tag fn__flex-center"></span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tags fn__flex-1 fn__flex-center">
+                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
+                        Unity3d</a>
+            </div>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+                <a href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html#b3logsolocomments"
+                   class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
+                   aria-label="评论">
+                    <span data-uvstatcmt="1602495480321">0</span>
+                    <span class="icon-chat"></span>
+                </a>
+            <a class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
+               href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html"
+               aria-label="浏览">
+                <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">0</span>
+                <span class="icon-views"></span>
+            </a>
+            <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
+                <img class="avatar" title="kyochow" alt="kyochow"
+                     src="https://b3logfile.com/avatar/1602432084209.png?imageView2/1/w/128/h/128/interlace/0/q/100"/>
+            </a>
+        </footer>
+    </article>
     <article>
         <header class="fn__flex">
             <h2 class="fn__flex-1">
@@ -78,44 +121,6 @@
                href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html"
                aria-label="浏览">
                 <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">0</span>
-                <span class="icon-views"></span>
-            </a>
-            <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
-                <img class="avatar" title="kyochow" alt="kyochow"
-                     src="https://b3logfile.com/avatar/1602432084209.png?imageView2/1/w/128/h/128/interlace/0/q/100"/>
-            </a>
-        </footer>
-    </article>
-    <article>
-        <header class="fn__flex">
-            <h2 class="fn__flex-1">
-                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
-                    关于Unity Native插件的开发
-                </a>
-            </h2>
-            <time><span class="icon-date"></span> 2020-10-12</time>
-        </header>
-            <a class="abstract vditor-reset" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
-                构建native库的意义  核心算法保密的思路 效率考量 跨端需求(客户端，服务端)
-            </a>
-        <footer class="article__footer fn__flex">
-            <span class="icon-tag fn__flex-center"></span>
-            <span>&nbsp;&nbsp;&nbsp;</span>
-            <div class="tags fn__flex-1 fn__flex-center">
-                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
-                        Unity3d</a>
-            </div>
-            <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html#b3logsolocomments"
-                   class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-                   aria-label="评论">
-                    <span data-uvstatcmt="1602495480321">0</span>
-                    <span class="icon-chat"></span>
-                </a>
-            <a class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-               href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html"
-               aria-label="浏览">
-                <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">0</span>
                 <span class="icon-views"></span>
             </a>
             <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
@@ -202,4 +207,4 @@
     </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 2ms, 2020/10/12 20:54:15 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 2ms, 2020/10/12 21:52:16 -->
