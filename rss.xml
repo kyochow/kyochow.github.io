@@ -4,9 +4,9 @@
     <title>kyochow 的个人博客</title>
     <link>https://kyochow.github.io</link>
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>记录精彩的程序人生</description>
+    <description>a code famer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Mon, 12 Oct 2020 10:25:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2020 10:30:26 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>Hello World</title>
