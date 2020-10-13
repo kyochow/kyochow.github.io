@@ -6,7 +6,7 @@
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>A Code Farmer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Mon, 12 Oct 2020 22:09:16 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2020 09:30:39 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>关于Unity Native插件的开发</title>
@@ -25,15 +25,6 @@
       <guid>https://kyochow.github.io/articles/2020/10/12/1602501885028.html</guid>
       <category>Unity3d</category>
       <pubDate>Mon, 12 Oct 2020 20:54:10 +0800</pubDate>
-    </item>
-    <item>
-      <title>Hello World</title>
-      <link>https://kyochow.github.io/articles/2020/10/12/1602469502660.html</link>
-      <description/>
-      <author>kyochow</author>
-      <guid>https://kyochow.github.io/articles/2020/10/12/1602469502660.html</guid>
-      <category>Solo</category>
-      <pubDate>Mon, 12 Oct 2020 10:25:20 +0800</pubDate>
     </item>
   </channel>
 </rss>
