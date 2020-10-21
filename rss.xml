@@ -6,7 +6,7 @@
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>A Code Farmer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 21 Oct 2020 11:15:09 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2020 11:51:08 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>lua 热部署简版</title>
@@ -15,7 +15,7 @@
       <author>kyochow</author>
       <guid>https://kyochow.github.io/articles/2020/10/21/1603245912000.html</guid>
       <category>Unity3d</category>
-      <pubDate>Wed, 21 Oct 2020 11:06:18 +0800</pubDate>
+      <pubDate>Wed, 21 Oct 2020 11:51:03 +0800</pubDate>
     </item>
     <item>
       <title>关于Unity Native插件的开发</title>
