@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>lua 热部署简版 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="lua 热部署简版 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/21/1603245912000.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="lua 热部署简版 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">        <link rel="stylesheet"
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>关于界面栈系统 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="关于界面栈系统 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/23/1603418345984.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="关于界面栈系统 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">        <link rel="stylesheet"
               href="https://kyochow.github.io/skins/yilia/css/base.css?1602466996458"/>
-            <link rel="prev" title="关于游戏加密" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
-            <link rel="next" title="关于界面栈系统" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
+            <link rel="prev" title="lua 热部署简版" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <div class="side fn__flex-column">
@@ -62,26 +61,26 @@
         <div class="toc">
             <a onclick="$('.side .toc').hide();" href="javascript:void(0)" class="close">X</a>
 <ul class="article__toc">
-        <li class="toc__h2">
-            <a href="#toc_h2_0">Why</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_1">有可改进的空间吗</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_2">关于热部署的核心技术点</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_3">1. 监听lua文件修改</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_4">2. 放弃现有lua环境中已经加载过的cache</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_5">3. 重新require</a>
+        <li class="toc__h1">
+            <a href="#toc_h1_0">概述</a>
         </li>
         <li class="toc__h1">
-            <a href="#toc_h1_6">PS 这里面包含的技术点</a>
+            <a href="#toc_h1_1">目标</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_2">抽象</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_3">解释</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#toc_h6_4">1. 为什么存储已关闭界面要用stack</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#toc_h6_5">2. stash 和pop的原理是什么</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_6">API</a>
         </li>
 </ul>        </div>
 </div>
@@ -89,30 +88,30 @@
     <article class="post">
         <header class="fn__flex">
             <h2 class="fn__flex-1">
-                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">
-                    lua 热部署简版
+                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
+                    关于界面栈系统
                 </a>
             </h2>
-            <time><span class="icon-date"></span> 2020-10-21</time>
+            <time><span class="icon-date"></span> 2020-10-23</time>
         </header>
         <div class="article__footer fn__flex">
             <span class="icon-tag fn__flex-center"></span>
             <span>&nbsp;&nbsp;&nbsp;</span>
             <div class="tags fn__flex-1 fn__flex-center">
-                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
-                        Unity3d</a>
+                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/%E8%AE%BE%E8%AE%A1">
+                        设计</a>
             </div>
             <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html#b3logsolocomments"
+                <a href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html#b3logsolocomments"
                    class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
                    aria-label="评论">
-                    <span data-uvstatcmt="1603245912000">0</span>
+                    <span data-uvstatcmt="1603418345984">0</span>
                     <span class="icon-chat"></span>
                 </a>
             <a class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-               href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html"
+               href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html"
                aria-label="浏览">
-                <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">0</span>
+                <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">0</span>
                 <span class="icon-views"></span>
             </a>
             <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
@@ -122,50 +121,90 @@
         </div>
 
         <section class="abstract vditor-reset">
-            <h2 id="toc_h2_0">Why</h2>
-<p>我们在做lua开发的时候，一般的流程</p>
+            <h1 id="toc_h1_0">概述</h1>
+<p>游戏内，关于界面的跳转逻辑，一般是有一定规则的，例如</p>
 <ol>
-<li>写代码，Play Unity，到我们的功能，看看效果</li>
-<li>发现又问题，修改代码</li>
-<li>重新 Play，运行到我们的功能，看效果</li>
-<li>循环2 - 3</li>
+<li>从主界面</li>
+<li>打开全屏界面A</li>
+<li>打开弹出框B</li>
+<li>关闭A和B后，打开C</li>
+<li>关闭C，弹出A，再弹出B</li>
+<li>关闭界面B</li>
+<li>关闭界面A</li>
+<li>打开主界面</li>
+<li>打开副本界面中，点击某副本</li>
+<li>弹出副本详情，点开战</li>
+<li>关闭所有界面，进入战斗场景</li>
+<li>等战斗结束，弹结算界面，清理战场</li>
+<li>弹回之前的副本和详情界面，并恢复当时的状态</li>
 </ol>
-<h2 id="toc_h2_1">有可改进的空间吗</h2>
-<p>lua支持热部署，不需要重启unity，重新打开该界面即可</p>
-<h2 id="toc_h2_2">关于热部署的核心技术点</h2>
-<h4 id="toc_h4_3">1. 监听lua文件修改</h4>
-<p>写一个配置文件，标明哪些目录是被监听的，其他项目可以使用FileSystemWatcher，但是unity项目比较简单，AssetPostprocess即可<br>
-当文件有修改，获得修改的文件路径</p>
-<h4 id="toc_h4_4">2. 放弃现有lua环境中已经加载过的cache</h4>
-<p>根据得到的路径，得到lua路径，并且</p>
-<pre><code>package.loaded['{requirePath}']=nil
-</code></pre>
-<h4 id="toc_h4_5">3. 重新require</h4>
-<pre><code>require('{requirePath}')
-</code></pre>
-<h1 id="toc_h1_6">PS 这里面包含的技术点</h1>
-<ol>
-<li>在Lua中使用require进行模块的加载，被成功加载的模块会将这个模块的引用保存到package.loaded表中；在使用require进行模块加载的时候，会首先在package.loaded表中查找，检测这个模块是否被加载过，如果被加载过则返回这个模块在package.loaded中保存的值，否则加载这个模块，所以，我们将package.loaded设置为nil，这样我们再require，就会从文件中重新加载了</li>
-</ol>
+<p>很啰嗦，但是这比较常见的流程，这里面有什么可以抽象出来的？可以达成什么目标？</p>
+<h1 id="toc_h1_1">目标</h1>
+<ul>
+<li>开发者不需要特别关注打开一个界面时，后面的界面是个什么状态</li>
+<li>开发者不需要特别关注在关闭一个界面的时候，该打开什么界面(除非有特殊跳转)</li>
+<li>进战斗前，开发者不必每个人都记录当前打开的界面</li>
+<li>出战斗后，开发者并不需要自己打开进战斗前的界面</li>
+<li>但是，界面内的还原工作，还是需要每个人自己做</li>
+</ul>
+<h1 id="toc_h1_2">抽象</h1>
+<ul>
+<li>界面类别：
+<ul>
+<li>A级全屏界面</li>
+<li>B级半屏界面</li>
+<li>C级不重要的弹出界面(确认框，飘字等)</li>
+</ul>
+</li>
+<li>记录一个当前已经打开的Main层的界面queue standBy</li>
+<li>记录一个当前已关闭的所有界面，pageStack</li>
+<li>正向打开逻辑
+<ul>
+<li>如果是打开半屏界面，别的事什么也不做</li>
+<li>如果是打开全屏界面，那么之前打开的所有界面都可以回对象池了，同时记录一个当时的数据包，push到pageStack中，并将当前界面放入standBy中</li>
+</ul>
+</li>
+<li>反向后退逻辑
+<ul>
+<li>如果是关闭弹出界面，只关闭，别的事什么也不做</li>
+<li>如果是关闭全屏界面，那要从记录的数据包合集里从后往前查找，逻辑如下：</li>
+</ul>
+</li>
+</ul>
+<h1 id="toc_h1_3">解释</h1>
+<h6 id="toc_h6_4">1. 为什么存储已关闭界面要用stack</h6>
+<p>这里是后进先出的原则，最后压进去的数据，最先弹出来，来判断是否为全屏界面</p>
+<h6 id="toc_h6_5">2. stash 和pop的原理是什么</h6>
+<p>stash和pop的灵感来自git，我们在工作中，经常会被插入一些临时的活，但是我们手里还有着原来的工作，那怎么办？使用git的处理流程如下：</p>
+<ul>
+<li>我们可以执行命令：git stash 就把我们的本地修改扔到缓存中了</li>
+<li>等我们这边处理完插入的事物并提交后，这时现在的工作区又是一个干净的了</li>
+<li>我们再执行命令：git stash pop</li>
+<li>把之前暂存的本地修改弹出来，再继续我们原来的工作</li>
+</ul>
+<p>同理，对比我们游戏内的流程</p>
+<ul>
+<li>我们再要插入一个事务之前(比方说进战斗),我们执行PageStack:StashAll()，把当前状态catch住，</li>
+<li>然后完成这个事务</li>
+<li>执行PageStack:StashPop(),这个方法会把界面清理干净，然后把之前暂存的界面分别弹出来，达到了还原的目的</li>
+</ul>
+<p>不过，我们的stash不支持多次执行，也没必要多次执行</p>
+<h1 id="toc_h1_6">API</h1>
                 <div>
                     <hr>
 
-标题：lua 热部署简版<br>
+标题：关于界面栈系统<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
-地址：<a href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html" target="_blank">https://kyochow.github.io/articles/2020/10/21/1603245912000.html</a><br>
+地址：<a href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html" target="_blank">https://kyochow.github.io/articles/2020/10/23/1603418345984.html</a><br>
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
                 </div>
 
                 <aside class="fn__flex">
-                        <a class="fn__flex-1 fn__flex-inline" rel="prev" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
+                        <a class="fn__flex-1 fn__flex-inline" rel="prev" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">
                             <strong>&lt;</strong>
-                            <span>&nbsp; 关于游戏加密&nbsp;&nbsp;&nbsp;</span>
-                        </a>
-                        <a class="fn__flex-inline" rel="next" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
-                            <span>关于界面栈系统&nbsp; </span>
-                            <strong>&gt;</strong>
+                            <span>&nbsp; lua 热部署简版&nbsp;&nbsp;&nbsp;</span>
                         </a>
                 </aside>
         </section>
@@ -173,9 +212,9 @@
         <footer class="fn-clear share">
             <div class="fn-right">
 <div class="article__share"
-     data-title="lua 热部署简版"
+     data-title="关于界面栈系统"
      data-blogtitle="代码加冰块"
-     data-url="https://kyochow.github.io/articles/2020/10/21/1603245912000.html"
+     data-url="https://kyochow.github.io/articles/2020/10/23/1603418345984.html"
      data-avatar="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -210,7 +249,7 @@
         <div style="padding: 30px 60px 30px 50px;" id="gitalk-container"></div>
         <div id="b3logsolocomments"></div>
         <div id="vcomment" style="padding: 30px 60px 30px 50px;" data-name="kyochow"
-             data-postId="1603245912000"></div>
+             data-postId="1603418345984"></div>
 
 <footer class="footer">
     <div class="fn-clear">
@@ -235,7 +274,7 @@
     version: "4.3.1",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1603245912000",
+    articleId: "1603418345984",
   }
 </script>
 <script src="https://kyochow.github.io/skins/yilia/js/common.min.js?1602466996458"></script>
@@ -245,7 +284,7 @@
     Util.addScript('https://kyochow.github.io/js/page.min.js?1602466996458', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1603245912000",
+        "oId": "1603418345984",
         "blogHost": "https://kyochow.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
@@ -254,7 +293,7 @@
         page.load();
         page.tips.externalRelevantArticlesDisplayCount = "0";
             page.loadRandomArticles();
-            page.loadRelevantArticles('1603245912000', '<h4>相关阅读：</h4>');
+            page.loadRelevantArticles('1603418345984', '<h4>相关阅读：</h4>');
         page.share()
     });
 </script>
@@ -262,4 +301,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 4ms, 2020/10/23 10:00:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 3ms, 2020/10/23 10:00:00 -->
