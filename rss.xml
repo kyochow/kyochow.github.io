@@ -6,7 +6,7 @@
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>A Code Farmer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Fri, 23 Oct 2020 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2020 15:32:57 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>关于界面栈系统</title>
@@ -15,7 +15,7 @@
       <author>kyochow</author>
       <guid>https://kyochow.github.io/articles/2020/10/23/1603418345984.html</guid>
       <category>设计</category>
-      <pubDate>Fri, 23 Oct 2020 09:59:55 +0800</pubDate>
+      <pubDate>Tue, 27 Oct 2020 15:32:49 +0800</pubDate>
     </item>
     <item>
       <title>lua 热部署简版</title>
