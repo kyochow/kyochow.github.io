@@ -6,8 +6,17 @@
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>A Code Farmer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Thu, 05 Nov 2020 19:37:10 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 19:50:54 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>拿一个很久之前的战斗系统架构图来充数</title>
+      <link>https://kyochow.github.io/articles/2020/11/05/1604577037251.html</link>
+      <description/>
+      <author>kyochow</author>
+      <guid>https://kyochow.github.io/articles/2020/11/05/1604577037251.html</guid>
+      <category>设计</category>
+      <pubDate>Thu, 05 Nov 2020 19:50:37 +0800</pubDate>
+    </item>
     <item>
       <title>svn&amp;git hook对工作流的提升</title>
       <link>https://kyochow.github.io/articles/2020/11/05/1604575596482.html</link>
