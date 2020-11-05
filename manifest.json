@@ -3,10 +3,10 @@
     "theme_color": "#1fb5ad",
     "background_color": "#f1f2f7",
     "display": "standalone",
-    "name": "kyochow 的个人博客",
+    "name": "代码加冰块",
     "start_url": ".",
-    "description": "记录精彩的程序人生",
-    "short_name": "kyochow 的个人博客",
+    "description": "A Code Farmer",
+    "short_name": "代码加冰块",
     "icons": [
         {
             "sizes": "48x48",

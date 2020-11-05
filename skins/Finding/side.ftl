@@ -35,7 +35,19 @@
             </li>
         </#list>
         <li>
+            <a href="${servePath}/categories.html">${categoryLabel}</a>
+        </li>
+        <li>
             <a href="${servePath}/tags.html">${allTagsLabel}</a>
+        </li>
+        <li>
+            <a href="${servePath}/archives.html">${archiveLabel}</a>
+        </li>
+        <li>
+            <a href="${servePath}/links.html">${linkLabel}</a>
+        </li>
+        <li>
+            <a rel="alternate" href="${servePath}/rss.xml">${subscribeLabel}</a>
         </li>
         <#if !staticSite>
             <li>
