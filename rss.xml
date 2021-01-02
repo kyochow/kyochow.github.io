@@ -6,8 +6,26 @@
     <atom:link href="https://kyochow.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>A Code Farmer</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Thu, 05 Nov 2020 19:50:54 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Jan 2021 11:27:25 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>关于游戏加密</title>
+      <link>https://kyochow.github.io/articles/2020/10/12/1602501885028.html</link>
+      <description/>
+      <author>kyochow</author>
+      <guid>https://kyochow.github.io/articles/2020/10/12/1602501885028.html</guid>
+      <category>Unity3d</category>
+      <pubDate>Sat, 02 Jan 2021 11:27:04 +0800</pubDate>
+    </item>
+    <item>
+      <title>LRU LFU算法在游戏中的应用</title>
+      <link>https://kyochow.github.io/articles/2020/11/07/1604734756556.html</link>
+      <description/>
+      <author>kyochow</author>
+      <guid>https://kyochow.github.io/articles/2020/11/07/1604734756556.html</guid>
+      <category>算法</category>
+      <pubDate>Sat, 07 Nov 2020 15:39:16 +0800</pubDate>
+    </item>
     <item>
       <title>拿一个很久之前的战斗系统架构图来充数</title>
       <link>https://kyochow.github.io/articles/2020/11/05/1604577037251.html</link>
@@ -52,15 +70,6 @@
       <guid>https://kyochow.github.io/articles/2020/10/12/1602495480321.html</guid>
       <category>Unity3d</category>
       <pubDate>Mon, 12 Oct 2020 21:55:33 +0800</pubDate>
-    </item>
-    <item>
-      <title>关于游戏加密</title>
-      <link>https://kyochow.github.io/articles/2020/10/12/1602501885028.html</link>
-      <description/>
-      <author>kyochow</author>
-      <guid>https://kyochow.github.io/articles/2020/10/12/1602501885028.html</guid>
-      <category>Unity3d</category>
-      <pubDate>Mon, 12 Oct 2020 20:54:10 +0800</pubDate>
     </item>
   </channel>
 </rss>
