@@ -1,0 +1,6 @@
+2020-10-12 09:43:17 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "B3_SOLO_USER" not found; SQL statement:
+SELECT 1 FROM `b3_solo_user` LIMIT 1 [42102-199]
+2020-10-12 09:43:17 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "B3_SOLO_OPTION" not found; SQL statement:
+SELECT 1 FROM `b3_solo_option` LIMIT 1 [42102-199]
