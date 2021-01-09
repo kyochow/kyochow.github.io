@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>LRU LFU算法在游戏中的应用 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="LRU LFU算法在游戏中的应用 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/11/07/1604734756556.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="LRU LFU算法在游戏中的应用 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/11/07/1604734756556.html">        <link rel="stylesheet"
-              href="https://kyochow.github.io/skins/yilia/css/base.css?1609557762959"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>内存管理策略 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="内存管理策略 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/11/07/1604734756556.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="内存管理策略 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/11/07/1604734756556.html">        <link rel="stylesheet"
+              href="https://kyochow.github.io/skins/yilia/css/base.css?1610202943343"/>
             <link rel="prev" title="拿一个很久之前的战斗系统架构图来充数" href="https://kyochow.github.io/articles/2020/11/05/1604577037251.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
@@ -34,7 +34,7 @@
             </h1>
         </hgroup>
         <p class="subtitle">
-            A Code Farmer
+            A Code Farmer!
         </p>
         <nav>
             <ul>
@@ -58,14 +58,17 @@
         <div class="toc">
             <a onclick="$('.side .toc').hide();" href="javascript:void(0)" class="close">X</a>
 <ul class="article__toc">
-        <li class="toc__h2">
-            <a href="#toc_h2_0">什么是LRU 什么是LFU</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_1">很容易就联想到，我们可以应用在内存管理策略上</a>
+        <li class="toc__h4">
+            <a href="#toc_h4_0">一个常见的内存管理策略</a>
         </li>
         <li class="toc__h4">
-            <a href="#toc_h4_2">一个内存管理策略</a>
+            <a href="#toc_h4_1">各层之间的策略是如下的(每个人思路不同，或许略有差异，但总体相似)</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#toc_h5_2">方案1</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#toc_h5_3">方案2</a>
         </li>
 </ul>        </div>
 </div>
@@ -74,10 +77,10 @@
         <header class="fn__flex">
             <h2 class="fn__flex-1">
                 <a rel="bookmark" href="https://kyochow.github.io/articles/2020/11/07/1604734756556.html">
-                    LRU LFU算法在游戏中的应用
+                    内存管理策略
                 </a>
             </h2>
-            <time><span class="icon-date"></span> 2020-11-07</time>
+            <time><span class="icon-date"></span> 2021-01-09</time>
         </header>
         <div class="article__footer fn__flex">
             <span class="icon-tag fn__flex-center"></span>
@@ -106,23 +109,37 @@
         </div>
 
         <section class="abstract vditor-reset">
-            <h2 id="toc_h2_0">什么是LRU 什么是LFU</h2>
+            <h4 id="toc_h4_0">一个常见的内存管理策略</h4>
 <ul>
-<li>LRU，全名为Least Recently Used，意指最近少用</li>
-<li>LFU，全名为Least Frequently Used，意指使用频率最低</li>
+<li>LEVEL-1 AssetBundle管理</li>
+<li>LEVEL-2 Asset管理</li>
+<li>LEVEL-3 实例管理(Pool管理)</li>
 </ul>
-<p>LRU和LFU都是缓存淘汰策略，简单理解</p>
-<p>LRU表达的是，淘汰掉太久时间不用的缓存</p>
-<p>LFU表达的是，淘汰掉使用频率过低的缓存</p>
-<h2 id="toc_h2_1">很容易就联想到，我们可以应用在内存管理策略上</h2>
-<h4 id="toc_h4_2">一个内存管理策略</h4>
-<pre><code>graph LR
-A--&gt;B
-</code></pre>
+<h4 id="toc_h4_1">各层之间的策略是如下的(每个人思路不同，或许略有差异，但总体相似)</h4>
+<ul>
+<li>逻辑层要一个对象的实例，调用Pool.Spawn(key)，例如创建一个npc路人甲</li>
+<li>Pool管理层找这个key的实例池子，如果有，生成一个实例返回，如果没有，到Asset层请求Asset来构建这个key的Pool</li>
+<li>Asset管理层，查找自己有没有这个资源，有就返回，没有，到Bundle层去申请这个key的Asset，并返回</li>
+<li>Bundle检查这个key属于哪个AssetBundle，如果AB已经加载了，从AB里Load这个Asset，如果AB没有加载，到磁盘上加载这个AB，然后再返回这个key的Asset</li>
+</ul>
+<p>看起来思路是ok的，但我们不可能把所有的AB都加载到内存，那就必然涉及到加载AB和卸载AB，其中加载没什么好说的，需要的时候必须加载，那问题是：不用的bundle我们什么时候卸载掉呢？</p>
+<h5 id="toc_h5_2">方案1</h5>
+<p>很自然的，我们就想到了引用计数策略：</p>
+<ul>
+<li>给Lv1，Lv2，Lv3的每一层个每一个Entity都添加一个引用计数</li>
+<li>应用层每请求某一个对象，对象池层(Lv3)就分配一个实例给上层，同时引用计数+1，上层每归还一个对象，引用计数就-1</li>
+<li>对象池层每申请一个Asset来</li>
+<li>当这个bundle引用计数为0的时候，卸载掉该bundle，简单粗暴够用</li>
+</ul>
+<p>相信很多游戏有这么一层已经足够了</p>
+<p>但这种做法足够好么？</p>
+<p>有一些资源，我们是很频繁的用,那我们用完立刻回收，是否会造成频繁的加载-创建-归还-销毁-加载-创建-归还-销毁的螺旋呢</p>
+<h5 id="toc_h5_3">方案2</h5>
+<p>在方案1的基础上，给每一个bundle记录一个时间戳，定时的内存检查轮询中，干掉时间戳最久的bundle即可</p>
                 <div>
                     <hr>
 
-标题：LRU LFU算法在游戏中的应用<br>
+标题：内存管理策略<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
 地址：<a href="https://kyochow.github.io/articles/2020/11/07/1604734756556.html" target="_blank">https://kyochow.github.io/articles/2020/11/07/1604734756556.html</a><br>
 
@@ -141,7 +158,7 @@ A--&gt;B
         <footer class="fn-clear share">
             <div class="fn-right">
 <div class="article__share"
-     data-title="LRU LFU算法在游戏中的应用"
+     data-title="内存管理策略"
      data-blogtitle="代码加冰块"
      data-url="https://kyochow.github.io/articles/2020/11/07/1604734756556.html"
      data-avatar="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
@@ -206,11 +223,11 @@ A--&gt;B
     articleId: "1604734756556",
   }
 </script>
-<script src="https://kyochow.github.io/skins/yilia/js/common.min.js?1609557762959"></script>
+<script src="https://kyochow.github.io/skins/yilia/js/common.min.js?1610202943343"></script>
 
 
 <script type="text/javascript">
-    Util.addScript('https://kyochow.github.io/js/page.min.js?1609557762959', 'soloPageScript')
+    Util.addScript('https://kyochow.github.io/js/page.min.js?1610202943343', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1604734756556",
@@ -230,4 +247,4 @@ A--&gt;B
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 10ms, 2021/01/02 11:27:25 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 33ms, 2021/01/09 22:41:09 -->
