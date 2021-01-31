@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>svn&git hook对工作流的提升 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="svn&git hook对工作流的提升 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/11/05/1604575596482.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="svn&git hook对工作流的提升 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/11/05/1604575596482.html">        <link rel="stylesheet"
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>程序员角度理解的Wwise - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="程序员角度理解的Wwise - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2021/02/01/1612112629626.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="程序员角度理解的Wwise - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2021/02/01/1612112629626.html">        <link rel="stylesheet"
               href="https://kyochow.github.io/skins/yilia/css/base.css?1612112514130"/>
-            <link rel="prev" title="关于界面栈系统" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
-            <link rel="next" title="拿一个很久之前的战斗系统架构图来充数" href="https://kyochow.github.io/articles/2020/11/05/1604577037251.html">
+            <link rel="prev" title="Lua加密更进一步" href="https://kyochow.github.io/articles/2021/01/09/1610205205933.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <div class="side fn__flex-column">
@@ -59,23 +58,65 @@
         <div class="toc">
             <a onclick="$('.side .toc').hide();" href="javascript:void(0)" class="close">X</a>
 <ul class="article__toc">
-        <li class="toc__h2">
-            <a href="#toc_h2_0">什么是hook机制，以svn为例</a>
+        <li class="toc__h1">
+            <a href="#toc_h1_0">Wwise概述</a>
         </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_1">最最最常用的hook</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_2">可以想象到用处吗</a>
+        <li class="toc__h1">
+            <a href="#toc_h1_1">程序员须要了解的</a>
         </li>
         <li class="toc__h3">
-            <a href="#toc_h3_3">项目健壮性提升，使用 pre-commit</a>
+            <a href="#toc_h3_2">事件 Event</a>
         </li>
         <li class="toc__h3">
-            <a href="#toc_h3_4">便利性提升 使用 post-commit</a>
+            <a href="#toc_h3_3">游戏同步 GameSync ，包括如下几个方面</a>
         </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_5">可以想象的空间真的很多，那怎么写</a>
+        <li class="toc__h4">
+            <a href="#toc_h4_4">1，开关 Switch</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_5">2，参数控制 RTPC(Real Time Parameter Control)</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_6">3，状态 State</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_7">4，触发器 Trigger</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_8">音频艺术家专业领域</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_9">随机化 Random Sounds</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_10">序列化 Sequence Sounds</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_11">3D空间化 3D Spatialization</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_12">声相偏移Speaker Panning</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#toc_h6_13">效果器</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_14">声音选角器 Soundcaster</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_15">调音台 Mixing Desk</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_16">以及更多专业领域......</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_17">优化</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_18">1，内存优化</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_19">2，CPU优化</a>
         </li>
 </ul>        </div>
 </div>
@@ -83,30 +124,30 @@
     <article class="post">
         <header class="fn__flex">
             <h2 class="fn__flex-1">
-                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/11/05/1604575596482.html">
-                    svn&git hook对工作流的提升
+                <a rel="bookmark" href="https://kyochow.github.io/articles/2021/02/01/1612112629626.html">
+                    程序员角度理解的Wwise
                 </a>
             </h2>
-            <time><span class="icon-date"></span> 2020-11-05</time>
+            <time><span class="icon-date"></span> 2021-02-01</time>
         </header>
         <div class="article__footer fn__flex">
             <span class="icon-tag fn__flex-center"></span>
             <span>&nbsp;&nbsp;&nbsp;</span>
             <div class="tags fn__flex-1 fn__flex-center">
-                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81">
-                        工作流</a>
+                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/%E5%BA%95%E5%B1%82">
+                        底层</a>
             </div>
             <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="https://kyochow.github.io/articles/2020/11/05/1604575596482.html#b3logsolocomments"
+                <a href="https://kyochow.github.io/articles/2021/02/01/1612112629626.html#b3logsolocomments"
                    class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
                    aria-label="评论">
-                    <span data-uvstatcmt="1604575596482">0</span>
+                    <span data-uvstatcmt="1612112629626">0</span>
                     <span class="icon-chat"></span>
                 </a>
             <a class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-               href="https://kyochow.github.io/articles/2020/11/05/1604575596482.html"
+               href="https://kyochow.github.io/articles/2021/02/01/1612112629626.html"
                aria-label="浏览">
-                <span data-uvstaturl="https://kyochow.github.io/articles/2020/11/05/1604575596482.html">0</span>
+                <span data-uvstaturl="https://kyochow.github.io/articles/2021/02/01/1612112629626.html">0</span>
                 <span class="icon-views"></span>
             </a>
             <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
@@ -116,75 +157,111 @@
         </div>
 
         <section class="abstract vditor-reset">
-            <h2 id="toc_h2_0">什么是hook机制，以svn为例</h2>
-<p>svn的hook机制，就是用户在对仓库进行操作的时候，当特定的事件发生时，相应的hook会被调用，hook 其实就相当于特定事件的处理函数。<br>
-更加详细的不赘述，大家去百度谷歌必应即可</p>
-<h2 id="toc_h2_1">最最最常用的hook</h2>
-<ol>
-<li>pre-commit 提交前校验是否允许提交</li>
-<li>post-commit 提交后 要做的事</li>
-</ol>
-<h2 id="toc_h2_2">可以想象到用处吗</h2>
-<h3 id="toc_h3_3">项目健壮性提升，使用 pre-commit</h3>
-<ol>
-<li>新建unity Assets 必须带.meta才允许提交</li>
-<li>每次提交必须是有意义的提交，与Jira进行强关联</li>
-<li>分支锁，当前分支有锁则不许提交，对QA很有用，出版本必备</li>
-</ol>
-<h3 id="toc_h3_4">便利性提升 使用 post-commit</h3>
-<ol>
-<li>使用REST API ,集成CI工具。例如配置文件(json)提交，触发Jenkins进行生成sqlite</li>
-<li>C#或lua脚本提交，触发编译，可以尽早发现白痴提交</li>
-<li>集成钉钉机器人，提交日志监控，看看团队中有没有划水的提交文本</li>
-<li>某些目录提交，通知某些人。例如角色配置提交，通知音频设计师配音效等</li>
-</ol>
-<h2 id="toc_h2_5">可以想象的空间真的很多，那怎么写</h2>
-<p>以检查jira号为例子，写的是shell，当然也可以写py</p>
-<pre><code>function checkJIRA {
-	JIRA_CODE=$1
-	AUTHOR=$2
-
-	NAME=$(echo ${JIRA_CODE} | tr 'a-z' 'A-Z')
-	result=$(curl -u username:passward -s https://jira.babeltime.com/rest/api/2/issue/${NAME}\?fields\=summary)
-	result1=${result##*summary\":\"}
-	if [ ${#result} == ${#result1} ];then
-		echo "输入的jira号不存在 [${NAME}]" 1&gt;&amp;2
-		exit 1
-	fi
-    exit 0
-}
-
-test -z "$(grep -i 'WEST-[[:digit:]]' $LOGFILE)" || {
-		num=$(grep -oE -i 'WEST-[0-9]*' $LOGFILE)
-		checkJIRA $num $AUTHOR
-}
-
-
-
-echo "请按照如下格式提交 [JIRA号 备注内容] " 1&gt;&amp;2
-echo "例: WEST-89757 大吉大利,今晚吃鸡" 1&gt;&amp;2
-exit 1
-</code></pre>
-<p>乏善可陈，其中1&gt;&amp;2 是输出到控制台，当exit 1的时候，可以再svn提交人直接看到报错信息</p>
+            <h1 id="toc_h1_0">Wwise概述</h1>
+<ul>
+<li>强大的游戏音频中间件</li>
+<li>游戏程序员与音频艺术家解开耦合，各司其职</li>
+<li>强大的混音台</li>
+<li>较多的内存及CPU优化手段</li>
+<li>内置的多语言支持</li>
+<li>多平台支持，每个平台可以独立调整各种设置</li>
+</ul>
+<h1 id="toc_h1_1">程序员须要了解的</h1>
+<h3 id="toc_h3_2">事件 Event</h3>
+<ul>
+<li>这是游戏引擎发送给Wwise引擎的Game Call，告诉wwise游戏内发生了某些事情，通常用来触发/停止声音，或者修改声音属性</li>
+<li>两边的事件名称必须对应，对象名称不区分大小写</li>
+</ul>
+<h3 id="toc_h3_3">游戏同步 GameSync ，包括如下几个方面</h3>
+<h4 id="toc_h4_4">1，开关 Switch</h4>
+<ul>
+<li>由游戏引擎发送，用来表示游戏内以条件来决定的情景，如：切换昼夜、地表类型等</li>
+<li>使用切换开关组(Switch Group)来实现多选一，类似于游戏内的Toggle Group</li>
+</ul>
+<h4 id="toc_h4_5">2，参数控制 RTPC(Real Time Parameter Control)</h4>
+<ul>
+<li>一般表示游戏中在一定范围内连续变化的信息，例如背景音乐音量、音效音量控制</li>
+<li>可以设置数值范围，又游戏引擎传入</li>
+<li>例：第一人称游戏中，玩家血量越低，心跳声越剧烈</li>
+</ul>
+<h4 id="toc_h4_6">3，状态 State</h4>
+<ul>
+<li>可用于标识个体的状态，例如玩家状态，生存、死亡、陆地上、水中等等</li>
+<li>个体处于不同状态，则可以使用不同的声音</li>
+<li>例：玩家从濒死状态切换到死亡，则可以心跳声由十分快速，逐渐减弱为0</li>
+</ul>
+<h4 id="toc_h4_7">4，触发器 Trigger</h4>
+<ul>
+<li>Wwise 中根据游戏中发生的事件来自动触发的反馈方式</li>
+<li>例，忍者拔出武器时，可以在已在播放中的动作音乐上插入强调类型的音乐效果，以增加场景的感染力</li>
+</ul>
+<h1 id="toc_h1_8">音频艺术家专业领域</h1>
+<h4 id="toc_h4_9">随机化 Random Sounds</h4>
+<ul>
+<li>随机属性 Pitch 音高，每次播放一个声音都会随机一个范围内的音高属性</li>
+<li>Random Container,随机容器，每次播放，在容器内随机一个声音进行播放</li>
+</ul>
+<h4 id="toc_h4_10">序列化 Sequence Sounds</h4>
+<ul>
+<li>Sequance Container 序列容器</li>
+<li>可以在序列容器里包含普通声音，静音，甚至随机容器</li>
+<li>可以多个随机容器拆出首声尾声，再用序列容器播放，用最少的音频资源做最多的变化</li>
+</ul>
+<h4 id="toc_h4_11">3D空间化 3D Spatialization</h4>
+<ul>
+<li>衰减 Attenuation 指定衰减曲线后，表示根据距离作出何种衰减</li>
+<li>可以指定位置或位置+朝向</li>
+<li>因为声音的高频分量会随着距离增加快速衰减，所以一般配合低通滤波器，也就是低频<br>
+分量更容易通过</li>
+<li>声锥衰减 Cone Attenuation 可以理解为喇叭，越正面声音越大，越背面声音最小</li>
+</ul>
+<h4 id="toc_h4_12">声相偏移Speaker Panning</h4>
+<ul>
+<li>2d剧情对话等声音，是不适合使用3d定位的，这种情况可以使用声像偏移技术来实现</li>
+</ul>
+<h6 id="toc_h6_13">效果器</h6>
+<p>可以给声音单独或批量加入效果，例如混响等效果</p>
+<h4 id="toc_h4_14">声音选角器 Soundcaster</h4>
+<ul>
+<li>用来调整和处理相互关联的声音，例如主角所有动作相关的所有声音相互影响是否合适，例如，跑动中开枪的主角，枪声和脚步声是否合理</li>
+</ul>
+<h4 id="toc_h4_15">调音台 Mixing Desk</h4>
+<ul>
+<li>声音艺术家专业</li>
+</ul>
+<h4 id="toc_h4_16">以及更多专业领域......</h4>
+<h1 id="toc_h1_17">优化</h1>
+<h4 id="toc_h4_18">1，内存优化</h4>
+<ul>
+<li>控制sound bank粒度，不需要的语音包不加载，例如以关卡或角色为单位划分</li>
+<li>减小音频包的体积，例如修改音频格式 wav-&gt;mp3(但是会降低声音品质,但很难避免)</li>
+<li>Conversion Setting，设置共享集批量转码，是否立体声，采样率，Vorbis格式等设置</li>
+<li>关于格式，在我心目中 iOS使用mp3格式，Android使用Vorbis格式(也就是ogg)，会是在压缩比、解压效率和效果中比较均衡的设置</li>
+<li>启用/关闭不重要的声音(会降低品质和随机性)</li>
+<li>Streaming，流式播放，大量降低内存，但有延迟，适合背景音乐和对声音及时性不那么敏感的游戏</li>
+</ul>
+<h4 id="toc_h4_19">2，CPU优化</h4>
+<ul>
+<li>项目级 Volume Threshold 可以缩减动态范围，裁剪一些声音</li>
+<li>项目级 Max Voice Instances 设置同时播放的数量</li>
+<li>物体级 Playback Limit ，可以给物体加最大限制，可以是PerObject或Global</li>
+<li>优先级系统Priority，优先级越低，越会被优先裁减掉</li>
+</ul>
                 <div>
                     <hr>
 
-标题：svn&git hook对工作流的提升<br>
+标题：程序员角度理解的Wwise<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
-地址：<a href="https://kyochow.github.io/articles/2020/11/05/1604575596482.html" target="_blank">https://kyochow.github.io/articles/2020/11/05/1604575596482.html</a><br>
+地址：<a href="https://kyochow.github.io/articles/2021/02/01/1612112629626.html" target="_blank">https://kyochow.github.io/articles/2021/02/01/1612112629626.html</a><br>
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
                 </div>
 
                 <aside class="fn__flex">
-                        <a class="fn__flex-1 fn__flex-inline" rel="prev" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
+                        <a class="fn__flex-1 fn__flex-inline" rel="prev" href="https://kyochow.github.io/articles/2021/01/09/1610205205933.html">
                             <strong>&lt;</strong>
-                            <span>&nbsp; 关于界面栈系统&nbsp;&nbsp;&nbsp;</span>
-                        </a>
-                        <a class="fn__flex-inline" rel="next" href="https://kyochow.github.io/articles/2020/11/05/1604577037251.html">
-                            <span>拿一个很久之前的战斗系统架构图来充数&nbsp; </span>
-                            <strong>&gt;</strong>
+                            <span>&nbsp; Lua加密更进一步&nbsp;&nbsp;&nbsp;</span>
                         </a>
                 </aside>
         </section>
@@ -192,9 +269,9 @@ exit 1
         <footer class="fn-clear share">
             <div class="fn-right">
 <div class="article__share"
-     data-title="svn&git hook对工作流的提升"
+     data-title="程序员角度理解的Wwise"
      data-blogtitle="代码加冰块"
-     data-url="https://kyochow.github.io/articles/2020/11/05/1604575596482.html"
+     data-url="https://kyochow.github.io/articles/2021/02/01/1612112629626.html"
      data-avatar="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -229,7 +306,7 @@ exit 1
         <div style="padding: 30px 60px 30px 50px;" id="gitalk-container"></div>
         <div id="b3logsolocomments"></div>
         <div id="vcomment" style="padding: 30px 60px 30px 50px;" data-name="kyochow"
-             data-postId="1604575596482"></div>
+             data-postId="1612112629626"></div>
 
 <footer class="footer">
     <div class="fn-clear">
@@ -254,7 +331,7 @@ exit 1
     version: "4.3.1",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1604575596482",
+    articleId: "1612112629626",
   }
 </script>
 <script src="https://kyochow.github.io/skins/yilia/js/common.min.js?1612112514130"></script>
@@ -264,7 +341,7 @@ exit 1
     Util.addScript('https://kyochow.github.io/js/page.min.js?1612112514130', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1604575596482",
+        "oId": "1612112629626",
         "blogHost": "https://kyochow.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
@@ -273,7 +350,7 @@ exit 1
         page.load();
         page.tips.externalRelevantArticlesDisplayCount = "0";
             page.loadRandomArticles();
-            page.loadRelevantArticles('1604575596482', '<h4>相关阅读：</h4>');
+            page.loadRelevantArticles('1612112629626', '<h4>相关阅读：</h4>');
         page.share()
     });
 </script>
@@ -281,4 +358,4 @@ exit 1
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 15ms, 2021/02/01 01:06:05 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 18ms, 2021/02/01 01:06:05 -->
