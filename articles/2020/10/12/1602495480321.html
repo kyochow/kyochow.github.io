@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>关于Unity Native插件的开发 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="关于Unity Native插件的开发 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/12/1602495480321.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="关于Unity Native插件的开发 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">        <link rel="stylesheet"
-              href="https://kyochow.github.io/skins/yilia/css/base.css?1613739025938"/>
+              href="https://kyochow.github.io/skins/9IPHP/css/base.css?1613739025938"/>
             <link rel="next" title="关于游戏加密" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script>    <script type="text/javascript" async
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
-    
+
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
@@ -15,136 +15,114 @@
     </script>
 </head>
 <body>
-<div class="side fn__flex-column">
-    <div class="overlay">
-        <a onclick="$('.side .toc').show()" href="javascript:void(0)" class="toc-btn">目录</a>
-    </div>
-    <div class="user__sites">
-    <a href="https://ld246.com/member/kyochow"
-       title="https://ld246.com/member/kyochow"
-       class="user__site"
-       target="_blank" rel="noopener nofollow">
-        <svg viewBox="0 0 32 32" width="100%" height="100%">
-            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
-            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
-            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
-        </svg>
-    </a>
-
-
-    </div>
-    <header class="content fn__flex-1">
-        <a href="https://kyochow.github.io">
-            <img class="avatar" src="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100" title="" alt=""/>
-        </a>
-        <hgroup>
-            <h1>
-                <a href="https://kyochow.github.io">代码加冰块</a>
+<header>
+    <div class="banner">
+        <div class="fn-clear wrapper">
+            <h1 class="fn-inline">
+                <a href="https://kyochow.github.io" rel="start">
+                    代码加冰块
+                </a>
             </h1>
-        </hgroup>
-        <p class="subtitle">
-            A Code Farmer!
-        </p>
-        <nav>
-            <ul>
-                    <li>
-                        <a href="https://kyochow.github.io/aboutme.html" target="_self">我的简历</a>
-                    </li>
-                <li>
-                    <a href="https://kyochow.github.io/tags.html">标签墙</a>
-                    &nbsp; &nbsp;
-                    <a href="https://kyochow.github.io/archives.html">存档</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <footer>
-            <div class="vditor-reset">周忠良
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$.get("https://v1.hitokoto.cn/",function(res){
-	$(".side .vditor-reset .module__content").append(res.hitokoto + "<br><div style='text-align:right;'>——" + res.from +"</div>");
-},"json");
-</script></div>
-        <a rel="alternate" href="https://kyochow.github.io/rss.xml" title="订阅" class="icon-rss"></a>
-    </footer>
-        <div class="toc">
-            <a onclick="$('.side .toc').hide();" href="javascript:void(0)" class="close">X</a>
-<ul class="article__toc">
-        <li class="toc__h1">
-            <a href="#toc_h1_0">构建native库的意义</a>
-        </li>
-        <li class="toc__h1">
-            <a href="#toc_h1_1">目标</a>
-        </li>
-        <li class="toc__h1">
-            <a href="#toc_h1_2">准备工作</a>
-        </li>
-        <li class="toc__h1">
-            <a href="#toc_h1_3">native插件的基本要素</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_4">1. 全局头文件Define.h，定义API，为了兼顾做Unity-Plugin和普通dll库，这里做一个宏定义判断(标准写法，全网通用)</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_5">2.具体暴露给Unity的方法如何定义？例如 Encrypt.h,标准写法如下</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_6">3.接下来具体逻辑怎么写？例如 Encrypt.cpp,标准写法如下</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_7">4.这样一个最基本的native就写完里，下一步是编译，我们使用cmake，这里不做cmake科普，一个CMakeLists.txt如下</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_8">5.有了CMakeLists.txt，各个平台执行shell或者bat包即可，仅举一个例子Android</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_9">6.在Unity中如何调用呢，废话不多说，直接上代码Encrypt.cs</a>
-        </li>
-        <li class="toc__h1">
-            <a href="#toc_h1_10">Demo</a>
-        </li>
-</ul>        </div>
-</div>
-<main>
-    <article class="post">
-        <header class="fn__flex">
-            <h2 class="fn__flex-1">
-                <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
-                    关于Unity Native插件的开发
-                </a>
-            </h2>
-            <time><span class="icon-date"></span> 2020-10-12</time>
-        </header>
-        <div class="article__footer fn__flex">
-            <span class="icon-tag fn__flex-center"></span>
-            <span>&nbsp;&nbsp;&nbsp;</span>
-            <div class="tags fn__flex-1 fn__flex-center">
-                    <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
-                        Unity3d</a>
-            </div>
-            <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html#b3logsolocomments"
-                   class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-                   aria-label="评论">
-                    <span data-uvstatcmt="1602495480321">0</span>
-                    <span class="icon-chat"></span>
-                </a>
-            <a class="vditor-tooltipped__n vditor-tooltipped link fn__flex-center"
-               href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html"
-               aria-label="浏览">
-                <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">0</span>
-                <span class="icon-views"></span>
-            </a>
-            <a rel="nofollow" href="https://kyochow.github.io/authors/1602467034967" class="fn__flex-center">
-                <img class="avatar" title="kyochow" alt="kyochow"
-                     src="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"/>
-            </a>
+            <small> &nbsp; A Code Farmer!</small>
         </div>
+    </div>
 
-        <section class="abstract vditor-reset">
-            <h1 id="toc_h1_0">构建native库的意义</h1>
+    <div class="navbar">
+        <div class="fn-clear wrapper">
+            <nav class="fn-left">
+                <a href="https://kyochow.github.io">
+                    <i class="icon-home"></i>
+                    首页
+                </a>
+                    <a href="https://kyochow.github.io/aboutme.html" target="_self" rel="section">
+                        我的简历
+                    </a>
+                <a href="https://kyochow.github.io/tags.html" rel="section">
+                    <i class="icon-tags"></i> 标签墙
+                </a>
+                <a href="https://kyochow.github.io/archives.html">
+                    <i class="icon-inbox"></i> 存档
+                </a>
+                <a rel="archive" href="https://kyochow.github.io/links.html">
+                    <i class="icon-link"></i> 友链
+                </a>
+                <a rel="alternate" href="https://kyochow.github.io/rss.xml" rel="section">
+                    <i class="icon-rss"></i> RSS
+                </a>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="responsive fn-none">
+    <i class="icon-list"></i>
+    <ul class="list">
+        <li>
+            <a href="https://kyochow.github.io">
+                <i class="icon-home"></i>
+                首页
+            </a>
+        </li>
+            <li>
+                <a href="https://kyochow.github.io/aboutme.html" target="_self" rel="section">
+                    我的简历
+                </a>
+            </li>
+        <li>
+            <a href="https://kyochow.github.io/tags.html" rel="section">
+                <i class="icon-tags"></i> 标签墙
+            </a>
+        </li>
+        <li>
+            <a href="https://kyochow.github.io/archives.html">
+                <i class="icon-inbox"></i> 存档
+            </a>
+        </li>
+        <li>
+            <a rel="archive" href="https://kyochow.github.io/links.html">
+                <i class="icon-link"></i> 友链
+            </a>
+        </li>
+        <li>
+            <a rel="alternate" href="https://kyochow.github.io/rss.xml" rel="section">
+                <i class="icon-rss"></i> RSS
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="wrapper">
+    <div class="main-wrap">
+        <main>
+            <article class="post">
+                <header>
+                    <h2>
+                        <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">
+                            关于Unity Native插件的开发
+                        </a>
+                    </h2>
+                    <div class="meta">
+                                <span class="vditor-tooltipped vditor-tooltipped__n"
+                                      aria-label="更新日期">
+                                    <i class="icon-date"></i>
+                                    <time>
+                                    2020-10-12
+                                    </time>
+                                </span>
+                        &nbsp; | &nbsp;
+                        <span class="vditor-tooltipped vditor-tooltipped__n" aria-label="评论数">
+                                    <i class="icon-comments"></i>
+                                    <a href="https://kyochow.github.io/articles/2020/10/12/1602495480321.html#b3logsolocomments">
+                                        <span data-uvstatcmt="1602495480321">0</span> 评论</a>
+                                </span>
+                        &nbsp; | &nbsp;
+                        <span class="vditor-tooltipped vditor-tooltipped__n" aria-label="浏览数">
+                                    <i class="icon-views"></i>
+                        <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/12/1602495480321.html">0</span> 浏览
+                                </span>
+                    </div>
+                </header>
+
+                <div class="vditor-reset post__content">
+                    <h1 id="toc_h1_0">构建native库的意义</h1>
 <ol>
 <li>核心算法保密（例如随机算法，寻路算法等）</li>
 <li>效率考量(c++库效率比C#要高一个数量级,即便是il2cpp也有极大差异)</li>
@@ -324,8 +302,8 @@ build android-16 x86 x86-4.9
 <h1 id="toc_h1_10">Demo</h1>
 <p>上面的代码仅仅是核心代码，一些include没有放进来，完整Demo可以看如下示例</p>
 <p><a href="https://github.com/kyochow/xor_unity_native.git" target="_blank">https://github.com/kyochow/xor_unity_native.git</a></p>
-                <div>
-                    <hr>
+                        <div>
+                            <hr>
 
 标题：关于Unity Native插件的开发<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
@@ -333,18 +311,14 @@ build android-16 x86 x86-4.9
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
+                        </div>
                 </div>
 
-                <aside class="fn__flex">
-                        <a class="fn__flex-inline" rel="next" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
-                            <span>关于游戏加密&nbsp; </span>
-                            <strong>&gt;</strong>
-                        </a>
-                </aside>
-        </section>
+                <footer class="tags">
+                        <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
+                            Unity3d</a>
 
-        <footer class="fn-clear share">
-            <div class="fn-right">
+                    <div class="rel fn-clear ft__center">
 <div class="article__share"
      data-title="关于Unity Native插件的开发"
      data-blogtitle="代码加冰块"
@@ -374,29 +348,66 @@ build android-16 x86 x86-4.9
         </svg>
     </span>
     <span class="item__qr"></span>
-</div>            </div>
-        </footer>
-            <div id="relevantArticles" class="abstract"></div>
-            <div id="randomArticles" class="abstract"></div>
-        <br>
-    </article>
-        <div style="padding: 30px 60px 30px 50px;" id="gitalk-container"></div>
-        <div id="b3logsolocomments"></div>
-        <div id="vcomment" style="padding: 30px 60px 30px 50px;" data-name="kyochow"
-             data-postId="1602495480321"></div>
-
-<footer class="footer">
-    <div class="fn-clear">
-        浏览数：<span data-uvstaturl="https://kyochow.github.io">0</span>
-        &nbsp;
-        文章总数：10
-        <br>
-        &copy; 2021
-        <a href="https://kyochow.github.io">代码加冰块</a>
-        
+</div>                            <a href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html" rel="next"
+                               class="fn-right vditor-tooltipped vditor-tooltipped__n"
+                               aria-label="关于游戏加密">
+                                新一篇
+                            </a>
+                    </div>
+                </footer>
+                    <div id="gitalk-container"></div>
+                    <div id="b3logsolocomments"></div>
+                    <div id="vcomment" data-name="kyochow" data-postId="1602495480321"></div>
+                <br>
+                <div id="externalRelevantArticles" class="list"></div>
+                <div id="relevantArticles" class="list"></div>
+                <div id="randomArticles" class="list"></div>
+            </article>
+        </main>
+<aside>
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#toc_h1_0">构建native库的意义</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_1">目标</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_2">准备工作</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_3">native插件的基本要素</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_4">1. 全局头文件Define.h，定义API，为了兼顾做Unity-Plugin和普通dll库，这里做一个宏定义判断(标准写法，全网通用)</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_5">2.具体暴露给Unity的方法如何定义？例如 Encrypt.h,标准写法如下</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_6">3.接下来具体逻辑怎么写？例如 Encrypt.cpp,标准写法如下</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_7">4.这样一个最基本的native就写完里，下一步是编译，我们使用cmake，这里不做cmake科普，一个CMakeLists.txt如下</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_8">5.有了CMakeLists.txt，各个平台执行shell或者bat包即可，仅举一个例子Android</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_9">6.在Unity中如何调用呢，废话不多说，直接上代码Encrypt.cs</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#toc_h1_10">Demo</a>
+        </li>
+</ul></aside>
     </div>
-    <span onclick="Util.goTop()" class="icon-goup"></span>
+</div>
+<footer class="footer fn-clear">
+    &copy; 2021
+    <a href="https://kyochow.github.io">代码加冰块</a>
+    
 </footer>
+<div class="icon-up" onclick="Util.goTop()"></div>
 <script>
   var Label = {
     speech: true,
@@ -411,8 +422,7 @@ build android-16 x86 x86-4.9
     articleId: "1602495480321",
   }
 </script>
-<script src="https://kyochow.github.io/skins/yilia/js/common.min.js?1613739025938"></script>
-
+<script src="https://kyochow.github.io/skins/9IPHP/js/common.min.js?1613739025938"></script>
 
 <script type="text/javascript">
     Util.addScript('https://kyochow.github.io/js/page.min.js?1613739025938', 'soloPageScript')
@@ -425,14 +435,14 @@ build android-16 x86 x86-4.9
     });
     $(document).ready(function () {
         page.load();
-        page.tips.externalRelevantArticlesDisplayCount = "0";
-            page.loadRandomArticles();
-            page.loadRelevantArticles('1602495480321', '<h4>相关阅读：</h4>');
-        page.share()
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+        page.loadRandomArticles();
+        page.loadRelevantArticles('1602495480321', '<h4>相关阅读</h4>');
+    Skin.initToc()
+    page.share()
     });
 </script>
-</main>
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 14ms, 2021/02/19 21:26:26 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 5ms, 2021/02/19 21:36:10 -->
