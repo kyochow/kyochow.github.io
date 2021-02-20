@@ -1,4 +1,14 @@
+git add .
+
+git ci -m "commit solo"
+
+git push
+
+
+
 cp -rf static-site/* ../static/
+
+cd ../static
 
 git add .
 
