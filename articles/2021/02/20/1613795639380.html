@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>lua 热部署简版 - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="lua 热部署简版 - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2020/10/21/1603245912000.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="lua 热部署简版 - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">        <link rel="stylesheet"
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>坐标系统(Coordinate System) - 代码加冰块</title><meta name="description" content="never say never"/><meta property="og:description" content="never say never"/>    <meta name="keywords" content="Solo,Unity3d"/><link rel="dns-prefetch" href="https://kyochow.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://kyochow.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="坐标系统(Coordinate System) - 代码加冰块"/><meta property="og:site_name" content="代码加冰块"/><meta property="og:url"      content="https://kyochow.github.io/articles/2021/02/20/1613795639380.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="坐标系统(Coordinate System) - 代码加冰块" href="/opensearch.xml"><link href="https://kyochow.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://kyochow.github.io/manifest.json">        <link rel="canonical" href="https://kyochow.github.io/articles/2021/02/20/1613795639380.html">        <link rel="stylesheet"
               href="https://kyochow.github.io/skins/9IPHP/css/base.css?1613795567416"/>
-            <link rel="prev" title="关于游戏加密" href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html">
-            <link rel="next" title="关于界面栈系统" href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html">
+            <link rel="prev" title="变换(Transformation)" href="https://kyochow.github.io/articles/2021/02/18/1613578720981.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script>    <script type="text/javascript" async
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
@@ -96,8 +95,8 @@
             <article class="post">
                 <header>
                     <h2>
-                        <a rel="bookmark" href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">
-                            lua 热部署简版
+                        <a rel="bookmark" href="https://kyochow.github.io/articles/2021/02/20/1613795639380.html">
+                            坐标系统(Coordinate System)
                         </a>
                     </h2>
                     <div class="meta">
@@ -105,55 +104,90 @@
                                       aria-label="更新日期">
                                     <i class="icon-date"></i>
                                     <time>
-                                    2020-10-21
+                                    2021-02-20
                                     </time>
                                 </span>
                         &nbsp; | &nbsp;
                         <span class="vditor-tooltipped vditor-tooltipped__n" aria-label="评论数">
                                     <i class="icon-comments"></i>
-                                    <a href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html#b3logsolocomments">
-                                        <span data-uvstatcmt="1603245912000">0</span> 评论</a>
+                                    <a href="https://kyochow.github.io/articles/2021/02/20/1613795639380.html#b3logsolocomments">
+                                        <span data-uvstatcmt="1613795639380">0</span> 评论</a>
                                 </span>
                         &nbsp; | &nbsp;
                         <span class="vditor-tooltipped vditor-tooltipped__n" aria-label="浏览数">
                                     <i class="icon-views"></i>
-                        <span data-uvstaturl="https://kyochow.github.io/articles/2020/10/21/1603245912000.html">0</span> 浏览
+                        <span data-uvstaturl="https://kyochow.github.io/articles/2021/02/20/1613795639380.html">0</span> 浏览
                                 </span>
                     </div>
                 </header>
 
                 <div class="vditor-reset post__content">
-                    <h2 id="toc_h2_0">Why</h2>
-<p>我们在做lua开发的时候，一般的流程</p>
-<ol>
-<li>写代码，Play Unity，到我们的功能，看看效果</li>
-<li>发现又问题，修改代码</li>
-<li>重新 Play，运行到我们的功能，看效果</li>
-<li>循环2 - 3</li>
-</ol>
-<h2 id="toc_h2_1">有可改进的空间吗</h2>
-<p>lua支持热部署，不需要重启unity，重新打开该界面即可</p>
-<h2 id="toc_h2_2">关于热部署的核心技术点</h2>
-<h4 id="toc_h4_3">1. 监听lua文件修改</h4>
-<p>写一个配置文件，标明哪些目录是被监听的，其他项目可以使用FileSystemWatcher，但是unity项目比较简单，AssetPostprocess即可<br>
-当文件有修改，获得修改的文件路径</p>
-<h4 id="toc_h4_4">2. 放弃现有lua环境中已经加载过的cache</h4>
-<p>根据得到的路径，得到lua路径，并且</p>
-<pre><code>package.loaded['{requirePath}']=nil
-</code></pre>
-<h4 id="toc_h4_5">3. 重新require</h4>
-<pre><code>require('{requirePath}')
-</code></pre>
-<h1 id="toc_h1_6">PS 这里面包含的技术点</h1>
-<ol>
-<li>在Lua中使用require进行模块的加载，被成功加载的模块会将这个模块的引用保存到package.loaded表中；在使用require进行模块加载的时候，会首先在package.loaded表中查找，检测这个模块是否被加载过，如果被加载过则返回这个模块在package.loaded中保存的值，否则加载这个模块，所以，我们将package.loaded设置为nil，这样我们再require，就会从文件中重新加载了</li>
-</ol>
+                    <h1 id="toc_h1_0">概述</h1>
+<p>为了将坐标从一个坐标系变换到另一个坐标系，需要用到几个变换矩阵，最重要的几个分别是模型(Model)、观察(View)、投影(Projection)三个矩阵。另外几个常见的概念</p>
+<ul>
+<li>局部空间(Local Space，或者称为物体空间(Object Space))</li>
+<li>世界空间(World Space)</li>
+<li>观察空间(View Space，或者称为视觉空间(Eye Space))</li>
+<li>裁剪空间(Clip Space)</li>
+<li>屏幕空间(Screen Space)</li>
+</ul>
+<p>下面的这张图展示了整个流程以及各个变换过程做了什么</p>
+<p><img src="https://raw.githubusercontent.com/kyochow/rendering/main/LearnOpenGL/6.1_CoordinateSystem/coordinate_systems.png" alt="坐标系统"></p>
+<h2 id="toc_h2_1">Local Coordinate 本地坐标</h2>
+<p>表示本物体相对于上一层的位置</p>
+<h2 id="toc_h2_2">World Coordinate 世界坐标</h2>
+<p>就是世界中的绝对位置</p>
+<p>对应的Unity。就是localPosition 和position的关系</p>
+<p>从Local转为World，需要M矩阵(Model Matrix)</p>
+<h2 id="toc_h2_3">View Coordinate 观察坐标</h2>
+<p>就是把Camera当作远点，场景中所有的物体做相应的平移</p>
+<p>例如 Camera位置 0 0 3，那场景中的物体，转换为观察坐标，则每一个物体的位置都加上 0 0 -3</p>
+<p>从World Coordinate 转为View Coordination，需要 V 矩阵(View Matrix)</p>
+<h2 id="toc_h2_4">Clip Coordinate 裁剪坐标</h2>
+<p>在一个顶点着色器运行的最后，OpenGL期望所有的坐标都能落在一个特定的范围(-1.0 到 1.0)内，就是NDC坐标，且任何在这个范围之外的点都应该被裁剪掉(Clipped),这个空间是裁剪空间，对应的坐标系就是裁剪坐标系</p>
+<p>从View Coordination转为 Clip Coordinate 裁剪坐标系，需要P矩阵(Projection Matrix)</p>
+<h4 id="toc_h4_5">投影矩阵(Projection Matrix)</h4>
+<p>指定了一个范围的坐标，比如在每个维度上的-1000到1000。投影矩阵接着会将在这个指定的范围内的坐标变换为标准化设备坐标的范围(-1.0, 1.0)，如果在范围外的就被裁掉了</p>
+<p>PS:如果只是图元(Primitive)，例如三角形，的一部分超出了裁剪体积(Clipping Volume)，则OpenGL会重新构建这个三角形为一个或多个三角形让其能够适合这个裁剪范围。</p>
+<p>由投影矩阵创建的<strong>观察箱</strong>(Viewing Box)被称为平截头体(Frustum)，每个出现在平截头体范围内的坐标都会最终出现在用户的屏幕上，将特定范围内的坐标转化到NDC的过程（而且它很容易被映射到2D观察空间坐标）被称之为投影(Projection)</p>
+<p>一旦所有顶点被变换到裁剪空间，最终的操作——透视除法(Perspective Division)将会执行，在这个过程中我们将位置向量的x，y，z分量分别除以向量的齐次w分量</p>
+<h4 id="toc_h4_6">正射投影</h4>
+<p><img src="https://raw.githubusercontent.com/kyochow/rendering/main/LearnOpenGL/6.1_CoordinateSystem/orthographic_frustum.png" alt="正射投影"></p>
+<p>正射投影矩阵定义了一个类似立方体的平截头箱，w = 1，glm代码：</p>
+<p><code>//前两个参数指定了平截头体的左右坐标，</code></p>
+<p><code>//第三和第四参数指定了平截头体的底部和顶部</code></p>
+<p><code>//第五和第六个参数则定义了近平面和远平面的距离</code></p>
+<p><code>glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, 0.1f, 100.0f);</code></p>
+<h4 id="toc_h4_7">透视投影</h4>
+<p><img src="https://raw.githubusercontent.com/kyochow/rendering/main/LearnOpenGL/6.1_CoordinateSystem/perspective_frustum.png" alt="坐标系统"></p>
+<p>离你越远的东西看起来更小。这个奇怪的效果称之为透视(Perspective)，使用透视投影矩阵来完成投影，这个投影矩阵将给定的平截头体范围映射到裁剪空间，除此之外还修改了每个顶点坐标的w值，从而使得离观察者越远的顶点坐标w分量越大 out = vec3(x/w,y/w,z/w),对应的glm代码：</p>
+<p><code>//第一个参数 fov</code></p>
+<p><code>//第二个参数 宽高比</code></p>
+<p><code>//第三个参数 近距离</code></p>
+<p><code>//第四个参数 远距离</code></p>
+<p><code>glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)width/(float)height, 0.1f, 100.0f);</code></p>
+<p><code>glm::perspective</code>所做的其实就是创建了一个定义了可视空间的大<strong>平截头体</strong>，任何在这个平截头体以外的东西最后都不会出现在裁剪空间体积内，并且将会受到裁剪，</p>
+<h4 id="toc_h4_8">组合在一起</h4>
+<p>$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$</p>
+<p>$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$<br>
+$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$</p>
+<p>$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$</p>
+<p>$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$<br>
+$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$<br>
+$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$</p>
+<p>$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$<br>
+$$ V*{clip} = M*{projection} \cdot M*{view} \cdot M*{model} \cdot V_{local} $$</p>
+<p>也就是常说的MPV矩阵，注意，矩阵运算是反着的，就是从右向左</p>
+<h2 id="toc_h2_9">Screen Coordinate 屏幕坐标系</h2>
+<p>从Clip Coordinate 到Screen Coordinate的过程，叫视窗变换 (Viewport Transform)</p>
+<p>Screen Coordinate  屏幕坐标系 (0 - 1)，对应的opengl的api是 glViewport</p>
+<h2 id="toc_h2_10">后续：变换出来的坐标将会送到光栅器，将其转化为片元，进入片元着色器</h2>
                         <div>
                             <hr>
 
-标题：lua 热部署简版<br>
+标题：坐标系统(Coordinate System)<br>
 作者：<a href="https://kyochow.github.io" target="_blank">kyochow</a><br>
-地址：<a href="https://kyochow.github.io/articles/2020/10/21/1603245912000.html" target="_blank">https://kyochow.github.io/articles/2020/10/21/1603245912000.html</a><br>
+地址：<a href="https://kyochow.github.io/articles/2021/02/20/1613795639380.html" target="_blank">https://kyochow.github.io/articles/2021/02/20/1613795639380.html</a><br>
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -161,19 +195,19 @@
                 </div>
 
                 <footer class="tags">
-                        <a class="tag" rel="tag" href="https://kyochow.github.io/tags/Unity3d">
-                            Unity3d</a>
+                        <a class="tag" rel="tag" href="https://kyochow.github.io/tags/%E6%B8%B2%E6%9F%93">
+                            渲染</a>
 
                     <div class="rel fn-clear ft__center">
-                            <a href="https://kyochow.github.io/articles/2020/10/12/1602501885028.html" rel="prev"
+                            <a href="https://kyochow.github.io/articles/2021/02/18/1613578720981.html" rel="prev"
                                class="fn-left vditor-tooltipped vditor-tooltipped__n"
-                               aria-label="关于游戏加密">
+                               aria-label="变换(Transformation)">
                                 旧一篇
                             </a>
 <div class="article__share"
-     data-title="lua 热部署简版"
+     data-title="坐标系统(Coordinate System)"
      data-blogtitle="代码加冰块"
-     data-url="https://kyochow.github.io/articles/2020/10/21/1603245912000.html"
+     data-url="https://kyochow.github.io/articles/2021/02/20/1613795639380.html"
      data-avatar="https://b3logfile.com/avatar/1602432084209_1602553167673.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -199,16 +233,11 @@
         </svg>
     </span>
     <span class="item__qr"></span>
-</div>                            <a href="https://kyochow.github.io/articles/2020/10/23/1603418345984.html" rel="next"
-                               class="fn-right vditor-tooltipped vditor-tooltipped__n"
-                               aria-label="关于界面栈系统">
-                                新一篇
-                            </a>
-                    </div>
+</div>                    </div>
                 </footer>
                     <div id="gitalk-container"></div>
                     <div id="b3logsolocomments"></div>
-                    <div id="vcomment" data-name="kyochow" data-postId="1603245912000"></div>
+                    <div id="vcomment" data-name="kyochow" data-postId="1613795639380"></div>
                 <br>
                 <div id="externalRelevantArticles" class="list"></div>
                 <div id="relevantArticles" class="list"></div>
@@ -217,26 +246,38 @@
         </main>
 <aside>
 <ul class="article__toc">
-        <li class="toc__h2">
-            <a href="#toc_h2_0">Why</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_1">有可改进的空间吗</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#toc_h2_2">关于热部署的核心技术点</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_3">1. 监听lua文件修改</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_4">2. 放弃现有lua环境中已经加载过的cache</a>
-        </li>
-        <li class="toc__h4">
-            <a href="#toc_h4_5">3. 重新require</a>
-        </li>
         <li class="toc__h1">
-            <a href="#toc_h1_6">PS 这里面包含的技术点</a>
+            <a href="#toc_h1_0">概述</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_1">Local Coordinate 本地坐标</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_2">World Coordinate 世界坐标</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_3">View Coordinate 观察坐标</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_4">Clip Coordinate 裁剪坐标</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_5">投影矩阵(Projection Matrix)</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_6">正射投影</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_7">透视投影</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_8">组合在一起</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_9">Screen Coordinate 屏幕坐标系</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_10">后续：变换出来的坐标将会送到光栅器，将其转化为片元，进入片元着色器</a>
         </li>
 </ul></aside>
     </div>
@@ -258,7 +299,7 @@
     version: "4.3.1",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1603245912000",
+    articleId: "1613795639380",
   }
 </script>
 <script src="https://kyochow.github.io/skins/9IPHP/js/common.min.js?1613795567416"></script>
@@ -267,7 +308,7 @@
     Util.addScript('https://kyochow.github.io/js/page.min.js?1613795567416', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1603245912000",
+        "oId": "1613795639380",
         "blogHost": "https://kyochow.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
@@ -276,7 +317,7 @@
         page.load();
     page.tips.externalRelevantArticlesDisplayCount = "0";
         page.loadRandomArticles();
-        page.loadRelevantArticles('1603245912000', '<h4>相关阅读</h4>');
+        page.loadRelevantArticles('1613795639380', '<h4>相关阅读</h4>');
     Skin.initToc()
     page.share()
     });
@@ -284,4 +325,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 18ms, 2021/02/20 12:36:58 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 14ms, 2021/02/20 12:36:58 -->
